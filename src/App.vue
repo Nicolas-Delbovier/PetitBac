@@ -8,6 +8,10 @@ const cards = ref([])
 function addCard() {
   cards.value.push({})
 }
+
+function clearInputs(){
+  
+}
 </script>
 
 <template>
@@ -24,13 +28,13 @@ function addCard() {
 
     <!-- Add Card Button -->
     <div class="button-area">
-      <button class="add-card-btn" @click="addCard">Add</button>
+      <button class="bottom-btn" @click="addCard">+</button>
+      <button v-if="cards.length > 0" class="bottom-btn" id="clear-inputs-btn" @click="clearInputs">Clear</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 #app {
   display: flex;
   flex-direction: column;
@@ -48,30 +52,31 @@ function addCard() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 200px;
   gap: 2rem;
   margin-top: 2rem;
 }
 
 .button-area {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   margin-top: 24px;
 }
 
-.add-card-btn {
-  background: var(--card-main);
+.bottom-btn {
   border: none;
   padding: 12px 32px;
   font-size: 1.2rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
-}
-
-.add-card-btn {
   background-color: var(--color-main);
   color: white;
+  width: 60%;
+}
+
+#clear-inputs-btn{
+  background-color: #83a2ffaa;
 }
 
 .logo {
