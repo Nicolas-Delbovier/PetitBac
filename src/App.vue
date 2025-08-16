@@ -13,9 +13,9 @@ function addCard() {
 <template>
   <div id="app">
     <!-- Title -->
-    <div class="main-title">
-      Petit Bac
-    </div>
+    <h1 class="main-title">
+      Le Petit Bac
+    </h1>
 
     <!-- Card Area -->
     <div class="card-area">
@@ -40,7 +40,8 @@ function addCard() {
   background-color: var(--color-main);
   font-size: 2rem;
   text-align: center;
-  font-family: "Gagalin";
+  font-family: "FingerPaint";
+  margin: 0;
 }
 
 .card-area {
