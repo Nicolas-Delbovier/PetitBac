@@ -1,10 +1,10 @@
 <template>
   <div class="card">
     <div class="card-top">
-      <input type="text" class="card-input" placeholder="Title" />
+      <input type="text" class="card-input" placeholder="|" />
     </div>
     <div class="card-bottom">
-      <input type="text" class="card-input" placeholder="Answer" />
+      <input type="text" class="card-input" placeholder="|" />
     </div>
   </div>
 </template>
