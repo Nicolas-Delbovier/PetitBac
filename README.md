@@ -1,5 +1,23 @@
-# Vue 3 + Vite
+# Le Petit Bac
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### 📝 About the Project
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+"Le Petit Bac" (also known as Baccalauréat, "Stop the Bus," or "Categories") is a classic word game: https://en.wikipedia.org/wiki/Categories_(game). This project is a simple, modern **Progressive Web App (PWA)** designed to make the game easier to play, especially when you're on the go with friends in the car. It handles the categories, letters, and scores, so you can focus on finding the best words!
+
+---
+
+### ✨ Features
+
+* **Offline-first PWA:** Play anywhere, anytime, without an internet connection. [TODO]
+* **Dynamic Categories:** Easily add or remove categories to customize your game. [TODO]
+* **Automatic Letter Generation:** Get a new letter with a single tap. [TODO]
+* **Score Tracking:** Keep a record of who's winning. [TODO]
+* **Translations:** Available in many languages. [TODO]
+
+---
+
+### 🔧 Technologies Used
+
+* **Vue 3:** For building the user interface.
+* **Vite:** A fast build tool for modern web projects.
+* **HTML & CSS:** Standard web technologies for structure and styling.
