@@ -24,7 +24,7 @@ function addCard() {
 
     <!-- Add Card Button -->
     <div class="button-area">
-      <button class="add-card-btn" @click="addCard">Add Card</button>
+      <button class="add-card-btn" @click="addCard">Add</button>
     </div>
   </div>
 </template>

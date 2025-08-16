@@ -14,13 +14,12 @@
 </script>
 
 <style scoped>
-
 .card {
-  width: 300px;
-  height: 200px;
+  width: 70%;
+  height: 100px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid black;
@@ -43,10 +42,33 @@
 }
 
 .card-input {
-  width: 80%;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+  width: fit-content;
+  padding: 6px;
   font-size: 1rem;
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  border: 0;
+  text-align: center;
+}
+
+.card-top>input{
+  color: white;
+}
+
+.card-bottom>input{
+  color: var(--color-main);
+}
+
+.card-top>input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: white;
+}
+
+.card-bottom>input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: var(--color-main);
 }
 </style>
