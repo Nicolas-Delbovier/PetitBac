@@ -1,35 +1,33 @@
 <script setup>
-import { ref } from 'vue'
-import Card from './components/Card.vue'
+import { ref } from 'vue';
+import Card from './components/Card.vue';
 
-// Cards state
-const cards = ref([])
+const cardsModels = ref([]);
 
 function addCard() {
-  cards.value.push({})
+  cardsModels.value.push({ title: '', answer: '' });
 }
 
-function clearInputs(){
-  
+function clearInputs() {
+  cardsModels.value.forEach(card => {
+    card.answer = '';
+  });
 }
 </script>
 
 <template>
   <div id="app">
-    <!-- Title -->
     <h1 class="main-title">
       Le Petit Bac
     </h1>
 
-    <!-- Card Area -->
     <div class="card-area">
-      <Card v-for="(card, idx) in cards" :key="idx" />
+      <Card v-for="(card, idx) in cardsModels" :key="idx" v-model:title="card.title" v-model:answer="card.answer" />
     </div>
 
-    <!-- Add Card Button -->
     <div class="button-area">
       <button class="bottom-btn" @click="addCard">+</button>
-      <button v-if="cards.length > 0" class="bottom-btn" id="clear-inputs-btn" @click="clearInputs">Clear</button>
+      <button v-if="cardsModels.length > 0" class="bottom-btn" id="clear-inputs-btn" @click="clearInputs">Clear</button>
     </div>
   </div>
 </template>
@@ -75,8 +73,8 @@ function clearInputs(){
   width: 60%;
 }
 
-#clear-inputs-btn{
-  background-color: #83a2ffaa;
+#clear-inputs-btn {
+  background-color: rgba(255, 67, 67, 0.667);
 }
 
 .logo {

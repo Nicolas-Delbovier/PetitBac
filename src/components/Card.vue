@@ -1,16 +1,17 @@
 <template>
   <div class="card">
     <div class="card-top">
-      <input type="text" class="card-input" placeholder="|" />
+      <input type="text" v-model="title" class="card-input" placeholder="|" />
     </div>
     <div class="card-bottom">
-      <input type="text" class="card-input" placeholder="|" />
+      <input type="text" v-model="answer" class="card-input" placeholder="|" />
     </div>
   </div>
 </template>
 
 <script setup>
-// No script logic needed for now
+const title = defineModel("title");
+const answer = defineModel("answer");
 </script>
 
 <style scoped>
@@ -52,11 +53,11 @@
   text-align: center;
 }
 
-.card-top>input{
+.card-top>input {
   color: white;
 }
 
-.card-bottom>input{
+.card-bottom>input {
   color: var(--color-main);
 }
 
