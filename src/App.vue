@@ -52,7 +52,7 @@ function deleteCard(i){
         <button class="decrease-btn" @click="() => scoreAdd(-1)">-</button>
       </div>
     </div>
-    <button id="toggle-delete-btn" @click="() => {isCardDeleteVisible=!isCardDeleteVisible}">Delete</button>
+    <button id="toggle-delete-btn" @click="() => {isCardDeleteVisible=!isCardDeleteVisible}">Toggle delete</button>
   </div>
 </template>
 
@@ -94,7 +94,7 @@ function deleteCard(i){
 
 #score-area {
   display: flex;
-  gap: 10%;
+  gap: 3vw;
   justify-content: center;
 }
 
@@ -105,12 +105,12 @@ function deleteCard(i){
 
 #score-buttons {
   display: flex;
-  gap: 10%
+  gap: 3vw;
 }
 
 .bottom-btn {
   padding: 12px 32px;
-  width: 60%;
+  width: 60vw;
 }
 
 .increase-btn {
