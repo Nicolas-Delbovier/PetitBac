@@ -17,15 +17,15 @@ function clearInputs() {
 
 <template>
   <div id="app">
-    <h1 class="main-title">
+    <h1 id="main-title">
       Le Petit Bac
     </h1>
 
-    <div class="card-area">
+    <div id="card-area">
       <Card v-for="(card, idx) in cardsModels" :key="idx" v-model:title="card.title" v-model:answer="card.answer" />
     </div>
 
-    <div class="button-area">
+    <div id="button-area">
       <button class="bottom-btn" @click="addCard">+</button>
       <button v-if="cardsModels.length > 0" class="bottom-btn" id="clear-inputs-btn" @click="clearInputs">Clear</button>
     </div>
@@ -38,7 +38,7 @@ function clearInputs() {
   flex-direction: column;
 }
 
-.main-title {
+#main-title {
   background-color: var(--color-main);
   font-size: 2rem;
   text-align: center;
@@ -46,7 +46,7 @@ function clearInputs() {
   margin: 0;
 }
 
-.card-area {
+#card-area {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +54,7 @@ function clearInputs() {
   margin-top: 2rem;
 }
 
-.button-area {
+#button-area {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,20 +75,5 @@ function clearInputs() {
 
 #clear-inputs-btn {
   background-color: rgba(255, 67, 67, 0.667);
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
