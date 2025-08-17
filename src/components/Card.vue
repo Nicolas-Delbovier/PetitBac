@@ -16,8 +16,8 @@ const answer = defineModel("answer");
 
 <style scoped>
 .card {
-  width: 70%;
-  height: 100px;
+  width: 70vw;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.5);

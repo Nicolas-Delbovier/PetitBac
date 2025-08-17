@@ -26,3 +26,17 @@
 body{
   margin: 0;
 }
+
+button{
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--color-main);
+  color: white;
+}
+
+svg {
+  max-width: 100%; /* Take up the full width of its container */
+  height: auto;    /* Maintain the aspect ratio */
+}

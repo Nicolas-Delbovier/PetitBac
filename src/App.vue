@@ -1,8 +1,11 @@
 <script setup>
 import { ref } from 'vue';
 import Card from './components/Card.vue';
+import TrashIcon from './components/TrashIcon.vue'
 
 const cardsModels = ref([]);
+const score = ref(0);
+const isCardDeleteVisible = ref(false);
 
 function addCard() {
   cardsModels.value.push({ title: '', answer: '' });
@@ -13,6 +16,16 @@ function clearInputs() {
     card.answer = '';
   });
 }
+
+function scoreAdd(i) {
+  score.value = Math.max(score.value + i, 0);
+}
+
+function deleteCard(i){
+  if (i > -1) {
+  cardsModels.value.splice(i, 1);
+}
+}
 </script>
 
 <template>
@@ -22,13 +35,24 @@ function clearInputs() {
     </h1>
 
     <div id="card-area">
-      <Card v-for="(card, idx) in cardsModels" :key="idx" v-model:title="card.title" v-model:answer="card.answer" />
+      <div class="card-row" v-for="(card, idx) in cardsModels">
+        <Card v-model:title="card.title" v-model:answer="card.answer" />
+        <TrashIcon v-if="isCardDeleteVisible" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)"/>
+      </div>
     </div>
 
     <div id="button-area">
       <button class="bottom-btn" @click="addCard">+</button>
       <button v-if="cardsModels.length > 0" class="bottom-btn" id="clear-inputs-btn" @click="clearInputs">Clear</button>
     </div>
+    <div id="score-area">
+      <span id="score-text">Your score: {{ score }}</span>
+      <div id="score-buttons">
+        <button class="increase-btn" @click="() => scoreAdd(1)">+</button>
+        <button class="decrease-btn" @click="() => scoreAdd(-1)">-</button>
+      </div>
+    </div>
+    <button id="toggle-delete-btn" @click="() => {isCardDeleteVisible=!isCardDeleteVisible}">Delete</button>
   </div>
 </template>
 
@@ -36,6 +60,7 @@ function clearInputs() {
 #app {
   display: flex;
   flex-direction: column;
+  gap: 2vh;
 }
 
 #main-title {
@@ -54,6 +79,11 @@ function clearInputs() {
   margin-top: 2rem;
 }
 
+.card-row{
+  display: flex;
+  gap: 5vw;
+}
+
 #button-area {
   display: flex;
   flex-direction: column;
@@ -62,16 +92,37 @@ function clearInputs() {
   margin-top: 24px;
 }
 
+#score-area {
+  display: flex;
+  gap: 10%;
+  justify-content: center;
+}
+
+#score-text {
+  color: var(--color-main);
+  font-size: large;
+}
+
+#score-buttons {
+  display: flex;
+  gap: 10%
+}
+
 .bottom-btn {
-  border: none;
   padding: 12px 32px;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: var(--color-main);
-  color: white;
   width: 60%;
 }
+
+.increase-btn {
+  background-color: green;
+  padding: 5px 10px;
+}
+
+.decrease-btn {
+  background-color: red;
+  padding: 5px 10px;
+}
+
 
 #clear-inputs-btn {
   background-color: rgba(255, 67, 67, 0.667);
