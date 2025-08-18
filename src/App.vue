@@ -50,13 +50,13 @@ function deleteCard(i) {
 
     <div id="tools-area">
       <button class="tool" id="erase-btn" @click="clearInputs">
-        <Icon name="eraser" :color="eraseIconColor" />
+        <Icon name="eraser" width="40" height="40" :color="eraseIconColor" />
       </button>
       <button class="tool" id="toggle-delete-btn" @click="() => { isCardDeleteVisible = !isCardDeleteVisible }">
-        <Icon name="trash" :color="toggleDeleteIconColor" />
+        <Icon name="trash" width="40" height="40" :color="toggleDeleteIconColor" />
       </button>
       <button class="tool" id="stop-btn" @click="() => { isGameStopped = !isGameStopped }">
-        <Icon name="stop" :color="stopIconColor" />
+        <Icon name="stop" width="40" height="40" :color="stopIconColor" />
       </button>
     </div>
 
@@ -102,6 +102,7 @@ function deleteCard(i) {
   position: sticky;
   top: 0px;
   height: 10vh;
+  z-index: 1000; /*To make it appear on top of cards: had a bug where placeholder has showing up through the tools bar*/ 
 }
 
 .tool {
@@ -111,7 +112,8 @@ function deleteCard(i) {
   align-items: center;
   background-color: white;
   border-radius: 0;
-  border: 1px solid grey;
+  border-bottom: 3px solid grey;
+  margin-top: -2vh;
 }
 
 #card-area {
