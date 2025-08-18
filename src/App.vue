@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Card from './components/Card.vue';
-import TrashIcon from './components/TrashIcon.vue'
+import Icon from './components/Icon.vue'
 
 const cardsModels = ref([]);
 const score = ref(0);
@@ -44,7 +44,7 @@ function deleteCard(i) {
     <div id="card-area">
       <div class="card-row" v-for="(card, idx) in cardsModels">
         <Card v-model:title="card.title" v-model:answer="card.answer" :isPointsAreaVisible="isGameStopped" @points="scoreAdd" />
-        <TrashIcon v-if="isCardDeleteVisible" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
+        <Icon v-if="isCardDeleteVisible" name="trash" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
       </div>
     </div>
 
