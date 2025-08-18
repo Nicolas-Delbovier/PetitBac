@@ -6,18 +6,22 @@
     <div class="card-bottom">
       <input type="text" v-model="answer" class="card-input" placeholder="|" />
     </div>
+    <div v-if="isPointsAreaVisible" id="points-area"><button class="point-btn">+1</button><button class="point-btn">+2</button><button class="point-btn">0</button></div>
   </div>
 </template>
 
 <script setup>
 const title = defineModel("title");
 const answer = defineModel("answer");
+const props = defineProps({
+  isPointsAreaVisible: Boolean
+})
 </script>
 
 <style scoped>
 .card {
   width: 70vw;
-  height: 15vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
@@ -45,7 +49,7 @@ const answer = defineModel("answer");
 .card-input {
   width: fit-content;
   padding: 6px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   background-color: transparent;
   color: white;
@@ -71,5 +75,17 @@ const answer = defineModel("answer");
   font-weight: bold;
   opacity: 0.5;
   color: var(--color-main);
+}
+
+#points-area{
+  display: flex;
+  gap: 0;
+  height: 5vh;
+}
+
+.point-btn{
+  flex:1;
+  border-radius: 0;
+  border: 1px solid black;
 }
 </style>
