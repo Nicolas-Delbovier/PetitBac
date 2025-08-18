@@ -6,6 +6,7 @@ import TrashIcon from './components/TrashIcon.vue'
 const cardsModels = ref([]);
 const score = ref(0);
 const isCardDeleteVisible = ref(false);
+const isGameStopped = ref(false);
 
 function addCard() {
   cardsModels.value.push({ title: '', answer: '' });
@@ -21,10 +22,10 @@ function scoreAdd(i) {
   score.value = Math.max(score.value + i, 0);
 }
 
-function deleteCard(i){
+function deleteCard(i) {
   if (i > -1) {
-  cardsModels.value.splice(i, 1);
-}
+    cardsModels.value.splice(i, 1);
+  }
 }
 </script>
 
@@ -34,10 +35,16 @@ function deleteCard(i){
       Le Petit Bac
     </h1>
 
+    <div id="tools-area">
+      <button class="tool" id="toggle-delete-btn" @click="() => { isCardDeleteVisible = !isCardDeleteVisible }">Toggle
+        delete</button>
+      <button class="tool" id="stop-btn" @click="() => { isGameStopped = !isGameStopped }">STOP</button>
+    </div>
+
     <div id="card-area">
       <div class="card-row" v-for="(card, idx) in cardsModels">
-        <Card v-model:title="card.title" v-model:answer="card.answer" />
-        <TrashIcon v-if="isCardDeleteVisible" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)"/>
+        <Card v-model:title="card.title" v-model:answer="card.answer" :isPointsAreaVisible="isGameStopped" />
+        <TrashIcon v-if="isCardDeleteVisible" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
       </div>
     </div>
 
@@ -52,7 +59,6 @@ function deleteCard(i){
         <button class="decrease-btn" @click="() => scoreAdd(-1)">-</button>
       </div>
     </div>
-    <button id="toggle-delete-btn" @click="() => {isCardDeleteVisible=!isCardDeleteVisible}">Toggle delete</button>
   </div>
 </template>
 
@@ -71,6 +77,18 @@ function deleteCard(i){
   margin: 0;
 }
 
+#tools-area {
+  display: flex;
+  position: sticky;
+  top: 0px;
+  height: 10vh;
+  border-bottom: 3px solid white;
+}
+
+.tool {
+  flex: 1;
+}
+
 #card-area {
   display: flex;
   flex-direction: column;
@@ -79,7 +97,7 @@ function deleteCard(i){
   margin-top: 2rem;
 }
 
-.card-row{
+.card-row {
   display: flex;
   gap: 5vw;
 }
