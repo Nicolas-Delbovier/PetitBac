@@ -6,7 +6,11 @@
     <div class="card-bottom">
       <input type="text" v-model="answer" class="card-input" placeholder="|" />
     </div>
-    <div v-if="isPointsAreaVisible" id="points-area"><button class="point-btn">+1</button><button class="point-btn">+2</button><button class="point-btn">0</button></div>
+    <div v-if="isPointsAreaVisible" id="points-area">
+      <button class="point-btn" @click="sendPoints(1)">+1</button>
+      <button class="point-btn" @click="sendPoints(2)">+2</button>
+      <button class="point-btn" @click="sendPoints(0)">0</button>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,10 @@ const answer = defineModel("answer");
 const props = defineProps({
   isPointsAreaVisible: Boolean
 })
+const emit = defineEmits(["points"]);
+function sendPoints(val) {
+  emit("points", val);
+}
 </script>
 
 <style scoped>

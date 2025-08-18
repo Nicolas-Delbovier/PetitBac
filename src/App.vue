@@ -43,7 +43,7 @@ function deleteCard(i) {
 
     <div id="card-area">
       <div class="card-row" v-for="(card, idx) in cardsModels">
-        <Card v-model:title="card.title" v-model:answer="card.answer" :isPointsAreaVisible="isGameStopped" />
+        <Card v-model:title="card.title" v-model:answer="card.answer" :isPointsAreaVisible="isGameStopped" @points="scoreAdd" />
         <TrashIcon v-if="isCardDeleteVisible" iconColor="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
       </div>
     </div>
