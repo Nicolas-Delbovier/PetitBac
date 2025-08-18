@@ -7,21 +7,34 @@
       <input type="text" v-model="answer" class="card-input" placeholder="|" />
     </div>
     <div v-if="isPointsAreaVisible" id="points-area">
-      <button class="point-btn" @click="sendPoints(1)">+1</button>
-      <button class="point-btn" @click="sendPoints(2)">+2</button>
-      <button class="point-btn" @click="sendPoints(0)">0</button>
+      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 1 }" @click="sendPoints(1)">
+        +1
+      </button>
+      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 2 }" @click="sendPoints(2)">
+        +2
+      </button>
+      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 0 }" @click="sendPoints(0)">
+        0
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
 const title = defineModel("title");
 const answer = defineModel("answer");
+
 const props = defineProps({
   isPointsAreaVisible: Boolean
-})
+});
+
+const selectedPointsButton = ref(undefined);
+
 const emit = defineEmits(["points"]);
 function sendPoints(val) {
+  selectedPointsButton.value = val;
   emit("points", val);
 }
 </script>
@@ -63,6 +76,7 @@ function sendPoints(val) {
   color: white;
   border: 0;
   text-align: center;
+  font-family: "PatrickHand";
 }
 
 .card-top>input {
@@ -85,15 +99,20 @@ function sendPoints(val) {
   color: var(--color-main);
 }
 
-#points-area{
+#points-area {
   display: flex;
   gap: 0;
   height: 5vh;
 }
 
-.point-btn{
-  flex:1;
+.point-btn {
+  flex: 1;
   border-radius: 0;
   border: 1px solid black;
+  background-color: var(--color-main-off);
+}
+
+.point-btn.selected {
+  background-color: var(--color-main);
 }
 </style>

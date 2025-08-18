@@ -3,6 +3,11 @@
   src: url(../fonts/Finger_Paint/FingerPaint-Regular.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "PatrickHand";
+  src: url(../fonts/Patrick_Hand/PatrickHand-Regular.ttf) format("truetype");
+}
+
 :root {
 
   /* Defaults with vite project build tool*/
