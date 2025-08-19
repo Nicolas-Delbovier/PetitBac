@@ -7,6 +7,7 @@ const cardsModels = ref([]);
 const score = ref(0);
 const isCardDeleteVisible = ref(false);
 const isGameStopped = ref(false);
+const gameLetter = ref('A')
 
 const stopIconColor = computed(() => {
   return isGameStopped.value ? "var(--color-main)" : "var(--color-main-off)"
@@ -15,11 +16,6 @@ const stopIconColor = computed(() => {
 const toggleDeleteIconColor = computed(() => {
   return isCardDeleteVisible.value ? "var(--color-main)" : "var(--color-main-off)"
 })
-
-const eraseIconColor = computed(() => {
-  const hasAnswers = cardsModels.value.some(card => card.answer !== '');
-  return hasAnswers ? "var(--color-main)" : "var(--color-main-off)";
-});
 
 function addCard() {
   cardsModels.value.push({ title: '', answer: '', points: undefined });
@@ -41,13 +37,18 @@ function deleteCard(i) {
   }
 }
 
-function scorePoints(){
-  for(let card of cardsModels.value){
+function scorePoints() {
+  for (let card of cardsModels.value) {
     score.value += card.points ? card.points : 0
     card.points = undefined
   }
   isGameStopped.value = false;
   clearInputs();
+}
+
+function chooseRandomLetter() {
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  gameLetter.value = alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 </script>
 
@@ -56,10 +57,10 @@ function scorePoints(){
     <h1 id="main-title">
       Le Petit Bac
     </h1>
-
+    
     <div id="tools-area">
-      <button class="tool" id="erase-btn" @click="clearInputs">
-        <Icon name="eraser" width="40" height="40" :color="eraseIconColor" />
+      <button class="tool" id="erase-btn" @click="chooseRandomLetter">
+        <div id="random-letter">{{ gameLetter.toUpperCase() }}</div>
       </button>
       <button class="tool" id="toggle-delete-btn" @click="() => { isCardDeleteVisible = !isCardDeleteVisible }">
         <Icon name="trash" width="40" height="40" :color="toggleDeleteIconColor" />
@@ -111,6 +112,12 @@ function scorePoints(){
   height: 10vh;
   /*↓ To make it appear on top of cards: had a bug where placeholder has showing up through the tools bar*/
   z-index: 1000;
+}
+
+#random-letter{
+  color: var(--color-main);
+  font-size: 40px;
+  font-family: "PatrickHand";
 }
 
 .tool {
