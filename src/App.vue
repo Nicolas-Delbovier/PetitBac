@@ -22,7 +22,7 @@ const eraseIconColor = computed(() => {
 });
 
 function addCard() {
-  cardsModels.value.push({ title: '', answer: '' });
+  cardsModels.value.push({ title: '', answer: '', points: undefined });
 }
 
 function clearInputs() {
@@ -39,6 +39,15 @@ function deleteCard(i) {
   if (i > -1) {
     cardsModels.value.splice(i, 1);
   }
+}
+
+function scorePoints(){
+  for(let card of cardsModels.value){
+    score.value += card.points ? card.points : 0
+    card.points = undefined
+  }
+  isGameStopped.value = false;
+  clearInputs();
 }
 </script>
 
@@ -62,16 +71,14 @@ function deleteCard(i) {
 
     <div id="card-area">
       <div class="card-row" v-for="(card, idx) in cardsModels">
-        <Card v-model:title="card.title" v-model:answer="card.answer" :isPointsAreaVisible="isGameStopped"
-          @points="scoreAdd" />
-        <Icon v-if="isCardDeleteVisible" name="X" color="red" width="10vw" height="10vw"
-          @click="deleteCard(idx)" />
+        <Card v-model:title="card.title" v-model:answer="card.answer" v-model:points="card.points"
+          :isPointsAreaVisible="isGameStopped" @points="" />
+        <Icon v-if="isCardDeleteVisible" name="X" color="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
       </div>
     </div>
 
-    <div id="button-area">
-      <button class="bottom-btn" @click="addCard">+</button>
-    </div>
+    <button v-if="!isGameStopped" class="centered-btn" @click="addCard">+</button>
+    <button v-if="isGameStopped" class="centered-btn" @click="scorePoints">Score it!</button>
     <div id="score-area">
       <span id="score-text">Your score: {{ score }}</span>
       <div id="score-buttons">
@@ -102,7 +109,8 @@ function deleteCard(i) {
   position: sticky;
   top: 0px;
   height: 10vh;
-  z-index: 1000; /*To make it appear on top of cards: had a bug where placeholder has showing up through the tools bar*/ 
+  /*↓ To make it appear on top of cards: had a bug where placeholder has showing up through the tools bar*/
+  z-index: 1000;
 }
 
 .tool {
@@ -153,9 +161,10 @@ function deleteCard(i) {
   gap: 3vw;
 }
 
-.bottom-btn {
+.centered-btn {
   padding: 12px 32px;
   width: 60vw;
+  margin: auto;
 }
 
 .increase-btn {

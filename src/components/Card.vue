@@ -7,13 +7,13 @@
       <input type="text" v-model="answer" class="card-input" placeholder="|" />
     </div>
     <div v-if="isPointsAreaVisible" id="points-area">
-      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 1 }" @click="sendPoints(1)">
+      <button class="point-btn" :class="{ 'selected': points === 1 }" @click="() => points = 1">
         +1
       </button>
-      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 2 }" @click="sendPoints(2)">
+      <button class="point-btn" :class="{ 'selected': points === 2 }" @click="() => points = 2">
         +2
       </button>
-      <button class="point-btn" :class="{ 'selected': selectedPointsButton === 0 }" @click="sendPoints(0)">
+      <button class="point-btn" :class="{ 'selected': points === 0 }" @click="() => points = 0">
         0
       </button>
     </div>
@@ -25,18 +25,12 @@ import { ref } from 'vue';
 
 const title = defineModel("title");
 const answer = defineModel("answer");
+const points = defineModel("points", { default: undefined });
 
 const props = defineProps({
   isPointsAreaVisible: Boolean
 });
 
-const selectedPointsButton = ref(undefined);
-
-const emit = defineEmits(["points"]);
-function sendPoints(val) {
-  selectedPointsButton.value = val;
-  emit("points", val);
-}
 </script>
 
 <style scoped>
