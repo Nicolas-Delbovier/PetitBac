@@ -83,8 +83,8 @@ function chooseRandomLetter() {
     <div id="score-area">
       <span id="score-text">Your score: {{ score }}</span>
       <div id="score-buttons">
-        <button class="increase-btn" @click="() => scoreAdd(1)">+</button>
-        <button class="decrease-btn" @click="() => scoreAdd(-1)">-</button>
+        <button class="score-adjust-btn" @click="() => scoreAdd(1)">+</button>
+        <button class="score-adjust-btn" @click="() => scoreAdd(-1)">-</button>
       </div>
     </div>
   </div>
@@ -160,7 +160,8 @@ function chooseRandomLetter() {
 
 #score-text {
   color: var(--color-main);
-  font-size: large;
+  font-size: 5vh;
+  font-family: "PatrickHand";
 }
 
 #score-buttons {
@@ -173,14 +174,7 @@ function chooseRandomLetter() {
   width: 60vw;
   margin: auto;
 }
-
-.increase-btn {
-  background-color: green;
-  padding: 5px 10px;
-}
-
-.decrease-btn {
-  background-color: red;
-  padding: 5px 10px;
+.score-adjust-btn{
+  width: 8vw;
 }
 </style>
