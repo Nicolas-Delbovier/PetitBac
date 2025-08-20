@@ -8,10 +8,10 @@
 
 ### ✨ Features
 
-* **Offline-first PWA:** Play anywhere, anytime, without an internet connection. [TODO]
-* **Dynamic Categories:** Easily add or remove categories to customize your game. [TODO]
-* **Automatic Letter Generation:** Get a new letter with a single tap. [TODO]
-* **Score Tracking:** Keep a record of who's winning. [TODO]
+* **Offline-first PWA:** Play anywhere, anytime, without an internet connection.
+* **Dynamic Categories:** Easily add or remove categories to customize your game.
+* **Automatic Letter Generation:** Get a new letter with a single tap.
+* **Score Tracking:** Keep a record of your points.
 * **Translations:** Available in many languages. [TODO]
 
 ---
