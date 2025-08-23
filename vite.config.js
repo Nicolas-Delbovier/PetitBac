@@ -469,9 +469,9 @@ export default defineConfig({
         }
       ],
       screenshots: [
-        "img/screenshots/petit-bac-screenshot.jpg",
-        "img/screenshots/petit-bac-delete-screenshot.jpg",
-        "img/screenshots/petit-bac-stopped-screenshot.jpg"
+        "img/screenshots/base.jpg",
+        "img/screenshots/edit.jpg",
+        "img/screenshots/score-it.jpg"
       ],
     },
   }),],

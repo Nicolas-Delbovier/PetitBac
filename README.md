@@ -6,9 +6,9 @@
 "Le Petit Bac" (also known as Baccalauréat, "Stop the Bus," or "Categories") is a classic word game: https://en.wikipedia.org/wiki/Categories_(game). This project is a simple, modern **Progressive Web App (PWA)** designed to make the game easier to play, especially when you're on the go with friends in the car. It handles the categories, letters, and scores, so you can focus on finding the best words!
 
 <div style="overflow-x: auto; white-space: nowrap;">
-  <img src="public/img/screenshots/petit-bac-screenshot.jpg" alt="Play menu screenshot" width="300">
-  <img src="public/img/screenshots/petit-bac-delete-screenshot.jpg" alt="Themes selection menu screenshot" width="300">
-  <img src="public/img/screenshots/petit-bac-stopped-screenshot.jpg" alt="Game screenshot" width="300">
+  <img src="public/img/screenshots/base.jpg" alt="Base view screenshot" width="300">
+  <img src="public/img/screenshots/edit.jpg" alt="Edit view screenshot" width="300">
+  <img src="public/img/screenshots/score-it.jpg" alt="Score view screenshot" width="300">
 </div>
 
 ---
@@ -26,7 +26,9 @@ Here's how to install the PWA:
 
 Finally, open the URL provided by ngrok in your web browser. While viewing the application, go into your browser's settings or menu (often represented by three dots or lines) and look for an option like "Add to Home Screen," "Install app," or "Download app" to install the PWA.
 
-On your phone you can sometimes simply reload the page and a pop up will appear asking you if you want to download the app.
+#### know install inssues
+
+If the 'Install app' button isn't visible in Chrome's menu, you can often trigger it manually. First, add the website shortcut to your home screen using the 'Add to Home screen' option. Then, refresh the page. Chrome should now display the install banner at the bottom of the screen, allowing you to install the app.
 
 --- 
 
