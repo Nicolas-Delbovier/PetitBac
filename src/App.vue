@@ -79,7 +79,7 @@ function chooseRandomLetter() {
     </div>
 
     <button v-if="!isGameStopped" class="centered-btn" @click="addCard">+</button>
-    <button v-if="isGameStopped" class="centered-btn" @click="scorePoints">Score it!</button>
+    <button v-if="isGameStopped" class="centered-btn" id="score-it-btn" @click="scorePoints">Score it!</button>
     <div id="score-area">
       <span id="score-text">Your score: {{ score }}</span>
       <div id="score-buttons">
@@ -176,5 +176,9 @@ function chooseRandomLetter() {
 }
 .score-adjust-btn{
   width: 8vw;
+}
+
+#score-it-btn{
+  background: radial-gradient(circle, rgb(246 9 97) 30%,var(--color-main) 100%);
 }
 </style>
