@@ -5,7 +5,7 @@ import Icon from './components/Icon.vue'
 
 const cardsModels = ref([]);
 const score = ref(0);
-const isCardDeleteVisible = ref(false);
+const isEditModeActive = ref(false);
 const isGameStopped = ref(false);
 const gameLetter = ref('A')
 
@@ -13,8 +13,8 @@ const stopIconColor = computed(() => {
   return isGameStopped.value ? "var(--color-main)" : "var(--color-main-off)"
 })
 
-const toggleDeleteIconColor = computed(() => {
-  return isCardDeleteVisible.value ? "var(--color-main)" : "var(--color-main-off)"
+const editIconColor = computed(() => {
+  return isEditModeActive.value ? "var(--color-main)" : "var(--color-main-off)"
 })
 
 function addCard() {
@@ -62,8 +62,8 @@ function chooseRandomLetter() {
       <button class="tool" id="erase-btn" @click="chooseRandomLetter">
         <div id="random-letter">{{ gameLetter.toUpperCase() }}</div>
       </button>
-      <button class="tool" id="toggle-delete-btn" @click="() => { isCardDeleteVisible = !isCardDeleteVisible }">
-        <Icon name="trash" width="40" height="40" :color="toggleDeleteIconColor" />
+      <button class="tool" id="toggle-edit-btn" @click="() => { isEditModeActive = !isEditModeActive }">
+        <Icon name="pencil" width="40" height="40" :color="editIconColor" />
       </button>
       <button class="tool" id="stop-btn" @click="() => { isGameStopped = !isGameStopped }">
         <Icon name="stop" width="40" height="40" :color="stopIconColor" />
@@ -74,7 +74,7 @@ function chooseRandomLetter() {
       <div class="card-row" v-for="(card, idx) in cardsModels">
         <Card v-model:title="card.title" v-model:answer="card.answer" v-model:points="card.points"
           :isPointsAreaVisible="isGameStopped" @points="" />
-        <Icon v-if="isCardDeleteVisible" name="X" color="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
+        <Icon v-if="isEditModeActive" name="X" color="red" width="10vw" height="10vw" @click="deleteCard(idx)" />
       </div>
     </div>
 
@@ -83,8 +83,8 @@ function chooseRandomLetter() {
     <div id="score-area">
       <span id="score-text">Your score: {{ score }}</span>
       <div id="score-buttons">
-        <button class="score-adjust-btn" @click="() => scoreAdd(1)">+</button>
-        <button class="score-adjust-btn" @click="() => scoreAdd(-1)">-</button>
+        <button v-if="isEditModeActive" class="score-adjust-btn" @click="() => scoreAdd(1)">+</button>
+        <button v-if="isEditModeActive" class="score-adjust-btn" @click="() => scoreAdd(-1)">-</button>
       </div>
     </div>
   </div>
