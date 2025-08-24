@@ -57,7 +57,7 @@ function chooseRandomLetter() {
     <h1 id="main-title">
       Le Petit Bac
     </h1>
-    
+
     <div id="tools-area">
       <button class="tool" id="erase-btn" @click="chooseRandomLetter">
         <div id="random-letter">{{ gameLetter.toUpperCase() }}</div>
@@ -114,7 +114,7 @@ function chooseRandomLetter() {
   z-index: 1000;
 }
 
-#random-letter{
+#random-letter {
   color: var(--color-main);
   font-size: 40px;
   font-family: "PatrickHand";
@@ -174,11 +174,22 @@ function chooseRandomLetter() {
   width: 60vw;
   margin: auto;
 }
-.score-adjust-btn{
+
+.score-adjust-btn {
   width: 8vw;
 }
 
-#score-it-btn{
-  background: radial-gradient(circle, rgb(246 9 97) 30%,var(--color-main) 100%);
+#score-it-btn {
+  background-color: var(--color-main);
+  background-image:
+    radial-gradient(at 96% 10%, hsla(305, 63%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 87% 8%, rgb(255, 173, 222) 0px, transparent 50%),
+    radial-gradient(at 36% 4%, rgb(161, 147, 240) 0px, transparent 50%),
+    radial-gradient(at 38% 90%, hsla(262, 62%, 63%, 1) 0px, transparent 50%),
+    radial-gradient(at 71% 30%, rgb(124, 89, 201) 0px, transparent 50%),
+    radial-gradient(at 37% 78%, hsla(289, 64%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 63% 48%, hsla(289, 76%, 66%, 1) 0px, transparent 50%);
+  font-family: PatrickHand;
+  font-size: 5vh;
 }
 </style>
