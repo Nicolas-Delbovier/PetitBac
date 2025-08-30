@@ -32,6 +32,9 @@
 body{
   margin: 0;
   margin-bottom: 20px;
+
+  /* Disable "scroll to refresh" */
+  overscroll-behavior-y: contain;
 }
 
 button{
@@ -51,3 +54,4 @@ svg {
   max-width: 100%; /* Take up the full width of its container */
   height: auto;    /* Maintain the aspect ratio */
 }
+
